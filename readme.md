@@ -1,8 +1,7 @@
 # Rock, Paper, Scissors Image Classification with TensorFlow
 
 <p align="center">
-<<<<<<< HEAD
-  <img src="https://storage.googleapis.com/kaggle-datasets-images/107582/256559/14accfe0345e7cd534eaff2a9658a4cf/dataset-cover.png?t=2019-01-19-17-16-51" alt="Rock, Paper, Scissors" width="400">
+  <img src="https://ichef.bbci.co.uk/news/624/mcs/media/images/74580000/jpg/_74580127_162317629(1).jpg" alt="Rock, Paper, Scissors" width="400">
 </p>
 
 Welcome to the Rock, Paper, Scissors image classification project! In this project, we will build and train a Convolutional Neural Network (CNN) using TensorFlow to classify images of rock, paper, and scissors.
