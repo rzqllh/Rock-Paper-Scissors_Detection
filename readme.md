@@ -7,16 +7,16 @@
 Welcome to the Rock, Paper, Scissors image classification project! In this project, we will build and train a Convolutional Neural Network (CNN) using TensorFlow to classify images of rock, paper, and scissors.
 
 ## Table of Contents
-- [Project Overview](#Project-Overview)
-- [Prerequisites](#Prerequisites)
-- [Dataset](#Dataset)
-- [Data Preprocessing](#Data-Preprocessing)
-- [Model Architecture](#Model-Architecture)
-- [Training the Model](#Training-the-Model)
-- [Model Evaluation](#Model-Evaluation)
-- [Making Predictions](#Making-Predictions)
-- [Conclusion](#Conclusion)
-- [References](#References)
+- [Project Overview](##Project-Overview)
+- [Prerequisites](##Prerequisites)
+- [Dataset](##Dataset)
+- [Data Preprocessing](##Data-Preprocessing)
+- [Model Architecture](##Model-Architecture)
+- [Training the Model](##Training-the-Model)
+- [Model Evaluation](##Model-Evaluation)
+- [Making Predictions](##Making-Predictions)
+- [Conclusion](##Conclusion)
+- [References](##References)
 
 ## Project Overview
 In this project, we will create a CNN model to classify hand gestures of rock, paper, and scissors. The dataset used for this project is available on Kaggle. Here's an overview of the project steps:
