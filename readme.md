@@ -1,60 +1,29 @@
 # Rock, Paper, Scissors Image Classification with TensorFlow
-This project demonstrates how to build and train a convolutional neural network (CNN) to classify images of rock, paper, and scissors using TensorFlow and the Kaggle dataset.
+
+<p align="center">
+  <img src="https://www.science.org/do/10.1126/science.aac4663/abs/sn-rockpaper.jpg" alt="Rock, Paper, Scissors" width="400">
+</p>
+
+Welcome to the Rock, Paper, Scissors image classification project! In this project, we will build and train a Convolutional Neural Network (CNN) using TensorFlow to classify images of rock, paper, and scissors.
+
+## Table of Contents
+- [Project Overview](#Project-Overview)
+- [Prerequisites](#Prerequisites)
+- [Dataset](#Dataset)
+- [Data Preprocessing](#Data-Preprocessing)
+- [Model Architecture](#Model-Architecture)
+- [Training the Model](#Training-the-Model)
+- [Model Evaluation](#Model-Evaluation)
+- [Making Predictions](#Making-Predictions)
+- [Conclusion](#Conclusion)
+- [References](#References)
+
+## Project Overview
+In this project, we will create a CNN model to classify hand gestures of rock, paper, and scissors. The dataset used for this project is available on Kaggle. Here's an overview of the project steps:
 
 ## Prerequisites
-Before running the code, you'll need to set up your Kaggle API key file and install the required libraries. Follow these steps:
-1. Install the Kaggle library:
-   ```bash
-   !pip install -q kaggle
+Before running the code, make sure you have the necessary libraries installed and set up your Kaggle API key:
 
-2. Upload your Kaggle API key file (kaggle.json) manually to the /root/.kaggle/ directory in your Colab environment.
-   ```bash
-   !mkdir -p ~/.kaggle
-   !cp kaggle.json ~/.kaggle/
-   !ls ~/.kaggle
-3. Set permissions for the Kaggle API key file:
-   ```bash
-   !chmod 600 /root/.kaggle/kaggle.json
+## Dataset
+The dataset used in this project is the [Rock, Paper, Scissors](https://www.kaggle.com/drgfreeman/rockpaperscissors) dataset from Kaggle. It contains images of hand gestures representing rock, paper, and scissors.
 
-### Step 1: Download and Prepare the Dataset
-This step involves downloading the dataset from Kaggle, extracting it, and organizing it into training and validation sets.
-
-### Step 2: Load and Preprocess the Dataset
-The dataset is split into training and validation sets, and data augmentation is applied using ImageDataGenerator to improve model generalization.
-
-### Step 3: Define and Train the Model
-A CNN model is defined and compiled. It consists of convolutional layers, max-pooling layers, and dense layers. The model is trained on the training data, and early stopping is applied to prevent overfitting.
-
-### Step 4: Evaluate the Model
-The model's performance is evaluated on both the training and validation sets to measure its accuracy.
-
-### Step 5: Make Predictions on New Images
-You can upload new images to the Colab environment and use the trained model to predict their classes.
-```bash
-from google.colab import files
-uploaded = files.upload()
-
-for fn in uploaded.keys():
-    # Load the image
-    path = fn
-    img = image.load_img(path, target_size=target_size)
-    imgplot = plt.imshow(img)
-    
-    # Preprocess the image
-    x = image.img_to_array(img)
-    x = np.expand_dims(x, axis=0)
-    
-    # Make predictions
-    images = np.vstack([x])
-    classes = model.predict(images, batch_size=10)
-
-    # Print the predicted class
-    print(fn)
-    print('Predicted class: ')
-    predicted_class_index = np.argmax(classes)
-    if predicted_class_index == 0:
-        print("Paper")
-    elif predicted_class_index == 1:
-        print("Rock")
-    elif predicted_class_index == 2:
-        print("Scissors")
