@@ -8,9 +8,7 @@ from keras.preprocessing import image
 from sklearn.model_selection import train_test_split
 
 # Step 1: Download and prepare the dataset
-
 # Make sure to upload your Kaggle API key (kaggle.json) manually to /root/.kaggle/ in your Colab environment.
-
 # Install Kaggle API client
 !pip install -q kaggle
 
@@ -63,8 +61,9 @@ for c in classes:
         target_file = os.path.join(val_class_dir, file)
         os.rename(source_file, target_file)
 
-# Step 2: Load and preprocess the dataset
 
+
+# Step 2: Load and preprocess the dataset
 base_dir = 'rockpaperscissors'
 train_dir = os.path.join(base_dir, 'train')
 val_dir = os.path.join(base_dir, 'val')
@@ -112,8 +111,9 @@ validation_generator = validation_datagen.flow_from_directory(
     subset='validation'
 )
 
-# Step 3: Define and train the model
 
+
+# Step 3: Define and train the model
 model = tf.keras.models.Sequential([
     tf.keras.layers.Conv2D(64, (3, 3), activation='relu', input_shape=(150, 150, 3)),
     tf.keras.layers.MaxPooling2D(2, 2),
@@ -153,8 +153,9 @@ model.fit(
     callbacks=[early_stopping_callback]
 )
 
-# Step 4: Evaluate the model
 
+
+# Step 4: Evaluate the model
 train_score = model.evaluate(train_generator)
 print("Train accuracy:", train_score[1] * 100, "%")
 
@@ -162,8 +163,8 @@ validation_score = model.evaluate(validation_generator)
 print("Validation accuracy:", validation_score[1] * 100, "%")
 
 
-# Step 5: Make predictions on new images
 
+# Step 5: Make predictions on new images
 from google.colab import files
 
 uploaded = files.upload()
