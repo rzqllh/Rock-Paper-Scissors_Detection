@@ -62,3 +62,15 @@ This project demonstrates how to build a CNN for image classification and provid
 - [TensorFlow Documentation](https://www.tensorflow.org/api_docs/python/tf)
 
 Feel free to explore the code and experiment with your own images. Have fun classifying rock, paper, and scissors gestures!
+
+# Error Update
+```bash
+ValueError                                Traceback (most recent call last)
+<ipython-input-9-a651793e253e> in <cell line: 6>()
+      4 print("Train accuracy:", train_score[1] * 100, "%")
+      5 
+----> 6 validation_score = model.evaluate(validation_generator)
+      7 print("Validation accuracy:", validation_score[1] * 100, "%"
+
+ValueError: Asked to retrieve element 0, but the Sequence has length 0
+```
