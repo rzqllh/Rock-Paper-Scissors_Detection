@@ -1,4 +1,3 @@
-
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import zipfile
@@ -10,14 +9,14 @@ from sklearn.model_selection import train_test_split
 
 # Step 1: Download and prepare the dataset
 
+# Make sure to upload your Kaggle API key (kaggle.json) manually to /root/.kaggle/ in your Colab environment.
+
+# Install Kaggle API client
 !pip install -q kaggle
 
-# Upload your Kaggle API key file (kaggle.json) manually to /root/.kaggle/ in your Colab environment
+# Set up Kaggle API key
 !mkdir -p ~/.kaggle
 !cp kaggle.json ~/.kaggle/
-!ls ~/.kaggle
-
-# Set permissions for the Kaggle API key file
 !chmod 600 /root/.kaggle/kaggle.json
 
 # Download the dataset from Kaggle
@@ -28,17 +27,18 @@ with zipfile.ZipFile('rockpaperscissors.zip', 'r') as zip_ref:
     zip_ref.extractall('rockpaperscissors')
 
 # Create train and val directories
-train_dir = 'rockpaperscissors/train'
-val_dir = 'rockpaperscissors/val'
+base_dir = 'rockpaperscissors'
+train_dir = os.path.join(base_dir, 'train')
+val_dir = os.path.join(base_dir, 'val')
 os.makedirs(train_dir, exist_ok=True)
 os.makedirs(val_dir, exist_ok=True)
 
-# Split data into train and val
+# Organize images into train and val directories
 classes = ['rock', 'paper', 'scissors']
 for c in classes:
-    source_dir = f'rockpaperscissors/{c}'
-    train_class_dir = f'{train_dir}/{c}'
-    val_class_dir = f'{val_dir}/{c}'
+    source_dir = os.path.join(base_dir, c)
+    train_class_dir = os.path.join(train_dir, c)
+    val_class_dir = os.path.join(val_dir, c)
 
     num_files = len(os.listdir(source_dir))
     num_train = int(0.8 * num_files)
@@ -46,12 +46,19 @@ for c in classes:
     os.makedirs(train_class_dir, exist_ok=True)
     os.makedirs(val_class_dir, exist_ok=True)
 
-    for file in os.listdir(source_dir)[:num_train]:
+    # List all files in the source directory
+    all_files = os.listdir(source_dir)
+
+    # Randomly shuffle the list of files
+    np.random.shuffle(all_files)
+
+    # Move images to the respective train and val directories
+    for file in all_files[:num_train]:
         source_file = os.path.join(source_dir, file)
         target_file = os.path.join(train_class_dir, file)
         os.rename(source_file, target_file)
 
-    for file in os.listdir(source_dir)[num_train:]:
+    for file in all_files[num_train:]:
         source_file = os.path.join(source_dir, file)
         target_file = os.path.join(val_class_dir, file)
         os.rename(source_file, target_file)
@@ -153,6 +160,7 @@ print("Train accuracy:", train_score[1] * 100, "%")
 
 validation_score = model.evaluate(validation_generator)
 print("Validation accuracy:", validation_score[1] * 100, "%")
+
 
 # Step 5: Make predictions on new images
 
